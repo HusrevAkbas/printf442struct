@@ -6,11 +6,11 @@
 #    By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/05 15:24:31 by huakbas           #+#    #+#              #
-#    Updated: 2024/11/16 13:50:47 by huakbas          ###   ########.fr        #
+#    Updated: 2024/11/20 16:08:01 by huakbas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS :=
+CFLAGS := -w
 PRINTF := printf
 
 TARGET := test
@@ -18,7 +18,7 @@ TARGET := test
 SRC := $(wildcard test*/*.c)
 
 all:
-	@ $(MAKE) -C ${PRINTF} all
+	@ $(MAKE) -C ${PRINTF} all clean
 	@ cc -g ${CFLAGS} ${SRC} test.c -L ${PRINTF} -lftprintf -o ${TARGET}
 	./${TARGET}
 

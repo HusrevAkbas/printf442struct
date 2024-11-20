@@ -6,11 +6,11 @@
 #    By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/05 17:57:44 by huakbas           #+#    #+#              #
-#    Updated: 2024/11/16 13:50:23 by huakbas          ###   ########.fr        #
+#    Updated: 2024/11/20 16:04:38 by huakbas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS := -Wall -Wextra -Werror
+CFLAGS := #-Wall -Wextra -Werror
 
 SRCFILES := ft_printf.c ft_handle_convertion.c ft_itobase_uint.c \
 ft_get_const.c ft_itobase_ul.c ft_handle_char.c ft_handle_int.c ft_handle_string.c \

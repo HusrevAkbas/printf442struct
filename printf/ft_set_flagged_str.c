@@ -3,45 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_set_flagged_str.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:23:46 by huakbas           #+#    #+#             */
-/*   Updated: 2024/10/20 00:33:33 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2024/11/20 17:03:08 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	get_width(char *flags, size_t len_str, size_t len_pfix)
+size_t	get_width(t_flags *flags, size_t len_str, size_t len_pfix)
 {
 	size_t	width;
 	size_t	precision;
 	int		i;
 
 	i = 0;
-	while (ft_strchr(get_const("flags"), flags[i]))
+	while (ft_strchr(get_const("flags"), flags->id))
 		i++;
-	width = ft_atoi(&flags[i]);
-	precision = get_precision(flags);
+	width = flags->width;
+	precision = flags->precision;
 	if (width < len_str + len_pfix)
 		width = len_str + len_pfix;
-	if (precision + len_pfix > width && !ft_strchr(flags, 's'))
+	if (precision + len_pfix > width && flags->id != 's')
 		width = precision + len_pfix;
-	if (ft_strchr(flags, 'c') && width > 0)
+	if (flags->id == 'c' && width > 0)
 		width--;
 	return (width);
 }
 
-void	left_align(char *flags, char *str_new, char *str, char *prefix)
+void	left_align(t_flags *flags, char *str_new, char *str, char *prefix)
 {
 	size_t	precision;
 	size_t	len_str;
 	size_t	len_pfix;
 
-	precision = get_precision(flags);
+	precision = flags->precision;
 	len_str = ft_strlen(str);
-	len_pfix = ft_strlen(prefix);
-	if (precision > len_str + len_pfix && !ft_strchr(flags, 's'))
+	len_pfix = ft_strlen(flags->prefix);
+	if (precision > len_str + len_pfix && flags->id != 's')
 	{
 		ft_memcpy(str_new, prefix, len_pfix);
 		ft_memset(str_new + len_pfix, '0', precision - len_str);
@@ -54,18 +54,18 @@ void	left_align(char *flags, char *str_new, char *str, char *prefix)
 	}
 }
 
-void	right_align(char *flags, char *str_new, char *str, char *prefix)
+void	right_align(t_flags *flags, char *str_new, char *str, char *prefix)
 {
 	size_t	precision;
 	size_t	len_str;
 	size_t	len_pfix;
 	size_t	width;
 
-	precision = get_precision(flags);
+	precision = flags->precision;
 	len_str = ft_strlen(str);
-	len_pfix = ft_strlen(prefix);
+	len_pfix = ft_strlen(flags->prefix);
 	width = get_width(flags, len_str, len_pfix);
-	if (precision > len_str && !ft_strchr(flags, 's'))
+	if (precision > len_str && flags->id != 's')
 	{
 		ft_memcpy(str_new + (width - precision - len_pfix), prefix, len_pfix);
 		ft_memset(str_new + (width - precision), '0', precision - len_str);
@@ -78,7 +78,7 @@ void	right_align(char *flags, char *str_new, char *str, char *prefix)
 	}
 }
 
-char	*ft_set_flagged_str(char *flags, char *str, char *prefix)
+char	*ft_set_flagged_str(t_flags *flags, char *str)
 {
 	char	*str_new;
 	size_t	width;
@@ -86,15 +86,15 @@ char	*ft_set_flagged_str(char *flags, char *str, char *prefix)
 	size_t	len_pfix;
 
 	len_str = ft_strlen(str);
-	len_pfix = ft_strlen(prefix);
+	len_pfix = ft_strlen(flags->prefix);
 	width = get_width(flags, len_str, len_pfix);
 	str_new = ft_calloc(width + 1, sizeof(char));
 	if (str_new == NULL)
 		return (NULL);
 	ft_memset(str_new, ' ', width);
-	if (ft_strchr(flags, '-'))
-		left_align(flags, str_new, str, prefix);
+	if (flags->minus == 1)
+		left_align(flags, str_new, str, flags->prefix);
 	else
-		right_align(flags, str_new, str, prefix);
+		right_align(flags, str_new, str, flags->prefix);
 	return (str_new);
 }

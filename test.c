@@ -8,6 +8,11 @@ void	test_main()
 	char	*string = "char pointer";
 
 	printf("\n			MAIN PART START		\n\n");
+	
+	resft = ft_printf("PERCENTAGE %%  %% ", 67, 68);
+	printf(" | restft: %i\n", resft);
+	resor = printf("PERCENTAGE %%  %% ", 67, 68);
+	printf(" | restor: %i\n", resor);
 
 	resft = ft_printf("CHAR %c a char: %c ", 67, 68);
 	printf(" | restft: %i\n", resft);
@@ -459,7 +464,6 @@ int main(void)
 {
 	//test_main();
 	//test_bonus_width_and_minus();
-	//test_bonus_flags();
-	//test_bonus_precision();
-	return 0;
+	test_bonus_flags();
+	test_bonus_precision();
 }

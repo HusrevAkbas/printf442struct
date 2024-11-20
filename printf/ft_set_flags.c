@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_set_flags.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 23:38:00 by husrevakbas       #+#    #+#             */
-/*   Updated: 2024/10/19 00:23:03 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2024/11/20 17:56:44 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,65 +22,58 @@
 		4- an optional length modifier.		NOT INCLUDED
 		5- convertion identifiers			cspdiuxX%
 */
-
-int	set_flagset(char *flags, char **checkpoint, int i)
+t_flags	*init_flag(void)
 {
-	while (ft_strchr(get_const("flags"), **checkpoint))
+	t_flags	*flags;
+	
+	flags = (t_flags *) malloc(8*sizeof(int) + sizeof(char *));
+	flags->id = 0;
+	flags->hash = 0;
+	flags->minus = 0;
+	flags->plus = 0;
+	flags->precision = 0;
+	flags->prefix = ft_strdup("");
+	flags->space = 0;
+	flags->width = 0;
+	flags->zero = 0;
+	return (flags);
+}
+void	set_flagset(t_flags *flags, char **checkpoint)
+{
+	while (**checkpoint && ft_strchr(get_const("flags"), **checkpoint))
 	{
-		if (!ft_strchr(flags, **checkpoint))
-		{
-			flags[i] = **checkpoint;
-			i++;
-		}
+		if (**checkpoint == '0')
+			flags->zero = 1;
+		if (**checkpoint == '-')
+			flags->minus = 1;
+		if (**checkpoint == '+')
+			flags->plus = 1;
+		if (**checkpoint == '#')
+			flags->hash = 1;
+		if (**checkpoint == ' ')
+			flags->space = 1;
 		*checkpoint += 1;
 	}
-	return (i);
 }
-
-int	set_width(char *flags, char **checkpoint, int i)
+t_flags	*set_flags(char **checkpoint)
 {
-	while (ft_isdigit(**checkpoint))
-	{
-		flags[i] = **checkpoint;
-		i++;
-		*checkpoint += 1;
-	}
-	return (i);
-}
+	t_flags	*flags;
 
-static int	set_prec(char *flags, char **checkpoint, int i)
-{
-	while (ft_isdigit(**checkpoint))
-	{
-		flags[i] = **checkpoint;
-		i++;
-		*checkpoint += 1;
-	}
-	return (i);
-}
-
-char	*set_flags(char **checkpoint)
-{
-	char	*flags;
-	int		i;
-
-	flags = ft_calloc(50, sizeof(char));
+	flags = init_flag();
 	if (flags == NULL)
 		return (NULL);
-	i = 0;
-	i = set_flagset(flags, checkpoint, i);
-	i = set_width(flags, checkpoint, i);
+	set_flagset(flags, checkpoint);
+	flags->width = ft_atoi(*checkpoint);
+	while (ft_isdigit(**checkpoint))
+		*checkpoint += 1;
 	if (**checkpoint == '.')
 	{
-		flags[i] = '.';
-		i++;
 		*checkpoint += 1;
+		flags->precision = ft_atoi(*checkpoint);
+		while (ft_isdigit(**checkpoint))
+			*checkpoint += 1;
 	}
-	i = set_prec(flags, checkpoint, i);
 	if (ft_strchr(get_const("con_id"), **checkpoint))
-	{
-		flags[i] = **checkpoint;
-		i++;
-	}
+		flags->id = **checkpoint;
 	return (flags);
 }

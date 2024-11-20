@@ -3,32 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_handle_string.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 14:08:58 by husrevakbas       #+#    #+#             */
-/*   Updated: 2024/10/20 00:22:41 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2024/11/20 17:08:42 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	get_precision(char *flags)
-{
-	int	i;
-	int	precision;
+//int	get_precision(char *flags)
+//{
+//	int	i;
+//	int	precision;
 
-	i = 0;
-	precision = 0;
-	while (flags[i])
-	{
-		if (flags[i] == '.')
-			precision = ft_atoi(&flags[i + 1]);
-		i++;
-	}
-	return (precision);
-}
+//	i = 0;
+//	precision = 0;
+//	while (flags[i])
+//	{
+//		if (flags[i] == '.')
+//			precision = ft_atoi(&flags[i + 1]);
+//		i++;
+//	}
+//	return (precision);
+//}
 
-void	ft_handle_string(char *flags, va_list args, int *res)
+void	ft_handle_string(t_flags *flags, va_list args, int *res)
 {
 	char	*str_to_print;
 	char	*str;
@@ -36,20 +36,20 @@ void	ft_handle_string(char *flags, va_list args, int *res)
 	int		precision;
 
 	str = va_arg(args, char *);
-	precision = get_precision(flags);
+	precision = flags->precision;
 	if (str)
 	{
-		if (ft_strchr(flags, '.') && precision < (int) ft_strlen(str))
+		if (flags->precision > 0 && precision < (int) ft_strlen(str))
 		{
 			substr = (char *) ft_substr(str, 0, precision);
-			str_to_print = ft_set_flagged_str(flags, substr, "");
+			str_to_print = ft_set_flagged_str(flags, substr);
 			free(substr);
 		}
 		else
-			str_to_print = ft_set_flagged_str(flags, str, "");
+			str_to_print = ft_set_flagged_str(flags, str);
 	}
 	else
-		str_to_print = ft_set_flagged_str(flags, "(null)", "");
+		str_to_print = ft_set_flagged_str(flags, "(null)");
 	*res += write(1, str_to_print, ft_strlen(str_to_print));
 	free(str_to_print);
 }
