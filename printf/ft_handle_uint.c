@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 20:13:50 by husrevakbas       #+#    #+#             */
-/*   Updated: 2024/11/20 17:58:27 by huakbas          ###   ########.fr       */
+/*   Updated: 2024/11/21 10:22:07 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	set_prefix(t_flags *flags)
 {
+	free(flags->prefix);
 	if (flags->id == 'x')
 		flags->prefix = ft_strdup("0x");
 	else if (flags->id == 'X')
