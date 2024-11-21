@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 23:38:00 by husrevakbas       #+#    #+#             */
-/*   Updated: 2024/11/20 17:56:44 by huakbas          ###   ########.fr       */
+/*   Updated: 2024/11/21 12:31:34 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ t_flags	*init_flag(void)
 	t_flags	*flags;
 	
 	flags = (t_flags *) malloc(8*sizeof(int) + sizeof(char *));
+	if (!flags)
+		return (NULL);
 	flags->id = 0;
 	flags->hash = 0;
 	flags->minus = 0;

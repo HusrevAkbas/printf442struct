@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 18:25:49 by huakbas           #+#    #+#             */
-/*   Updated: 2024/11/20 17:27:46 by huakbas          ###   ########.fr       */
+/*   Updated: 2024/11/21 12:29:53 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	check_flags_handle(char **checkpoint, va_list args, int *res)
 
 	set_back_checkpoint = *checkpoint;
 	flags = (t_flags *) set_flags(checkpoint);
-	if (flags == NULL)
+	if (!flags)
 		return ;
 	*checkpoint += 1;
 	if (flags->id && ft_strchr(get_const("con_id"), flags->id))
