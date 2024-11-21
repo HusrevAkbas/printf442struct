@@ -299,46 +299,46 @@ void	test_bonus_flags()
 
 	printf("\n		BONUS + SPACE # START		\n\n");
 
-	// resft = ft_printf("PERCENT % -0+15% a char: % +015%");
-	// printf(" | restft: %i\n", resft);
-	// resor = printf("PERCENT % -+015% a char: % +015%");
-	// printf(" | restor: %i\n", resor);
+	resft = ft_printf("PERCENT % -0+15% a char: % +015%");
+	printf(" | restft: %i\n", resft);
+	resor = printf("PERCENT % -+015% a char: % +015%");
+	printf(" | restor: %i\n", resor);
 	
-	//resft = ft_printf("%-1c%-2c%-3c", '0', 0, '1');
-	//printf(" | restft: %i\n", resft);
-	//resor = printf("%-1c%-2c%-3c", '0', 0, '1');
-	//printf(" | restor: %i\n", resor);
+	resft = ft_printf("%-1c%-2c%-3c", '0', 0, '1');
+	printf(" | restft: %i\n", resft);
+	resor = printf("%-1c%-2c%-3c", '0', 0, '1');
+	printf(" | restor: %i\n", resor);
 
-	//resft = ft_printf("CHAR%-0+2ca char: %-0+5c", 0, 68);
-	//printf(" | restft: %i\n", resft);
-	//resor = printf("CHAR%-0+2ca char: %-0+5c", 0, 68);
-	//printf(" | restor: %i\n", resor);
+	resft = ft_printf("CHAR%-0+2ca char: %-0+5c", 0, 68);
+	printf(" | restft: %i\n", resft);
+	resor = printf("CHAR%-0+2ca char: %-0+5c", 0, 68);
+	printf(" | restor: %i\n", resor);
 
-	//resft = ft_printf("CHAR %+02c a char: %+05c", 66, 0);
-	//printf(" | restft: %i\n", resft);
-	//resor = printf("CHAR %+02c a char: %+05c", 66, 0);
-	//printf(" | restor: %i\n", resor);
+	resft = ft_printf("CHAR %+02c a char: %+05c", 66, 0);
+	printf(" | restft: %i\n", resft);
+	resor = printf("CHAR %+02c a char: %+05c", 66, 0);
+	printf(" | restor: %i\n", resor);
 
-	///*	START POINTERS	*/
-	//resft = ft_printf("POINTER % +#010p a char: %+0 10p", string, 0);
-	//printf(" | restft: %i\n", resft);
-	//resor = printf("POINTER % +#010p a char: %+0 10p", string, 0);
-	//printf(" | restor: %i\n", resor);
+	/*	START POINTERS	*/
+	resft = ft_printf("POINTER % +#010p a char: %+0 10p", string, 0);
+	printf(" | restft: %i\n", resft);
+	resor = printf("POINTER % +#010p a char: %+0 10p", string, 0);
+	printf(" | restor: %i\n", resor);
 
-	//resft = ft_printf("POINTER % #010p a char: %+0 10p", string, 0);
-	//printf(" | restft: %i\n", resft);
-	//resor = printf("POINTER % #010p a char: %+0 10p", string, 0);
-	//printf(" | restor: %i\n", resor);
+	resft = ft_printf("POINTER % #010p a char: %+0 10p", string, 0);
+	printf(" | restft: %i\n", resft);
+	resor = printf("POINTER % #010p a char: %+0 10p", string, 0);
+	printf(" | restor: %i\n", resor);
 
-	//resft = ft_printf("POINTER %#010p a char: %+0 10p", string, 0);
-	//printf(" | restft: %i\n", resft);
-	//resor = printf("POINTER %#010p a char: %+0 10p", string, 0);
-	//printf(" | restor: %i\n", resor);
+	resft = ft_printf("POINTER %#010p a char: %+0 10p", string, 0);
+	printf(" | restft: %i\n", resft);
+	resor = printf("POINTER %#010p a char: %+0 10p", string, 0);
+	printf(" | restor: %i\n", resor);
 
-	//resft = ft_printf("POINTER %-0+10p a char: %-0+10p", string, 0);
-	//printf(" | restft: %i\n", resft);
-	//resor = printf("POINTER %-0+10p a char: %-0+10p", string, 0);
-	//printf(" | restor: %i\n", resor);
+	resft = ft_printf("POINTER %-0+10p a char: %-0+10p", string, 0);
+	printf(" | restft: %i\n", resft);
+	resor = printf("POINTER %-0+10p a char: %-0+10p", string, 0);
+	printf(" | restor: %i\n", resor);
 	/*	END POINTERS	*/
 
 	resft = ft_printf("INT MAX %# 0+15u a char: %+015u", INT_MAX, 0);
@@ -353,40 +353,40 @@ void	test_bonus_flags()
 
 	/*	START INTEGER d i FLAGS */
 
-	//resft = ft_printf("  INTEGER MAX % 015d a char: %+015d", INT_MAX, 0);
-	//printf(" | restft: %i\n", resft);
-	//resor = printf("  INTEGER MAX % 015d a char: %+015d", INT_MAX, 0);
-	//printf(" | restor: %i\n", resor);
+	resft = ft_printf("  INTEGER MAX % 015d a char: %+015d", INT_MAX, 0);
+	printf(" | restft: %i\n", resft);
+	resor = printf("  INTEGER MAX % 015d a char: %+015d", INT_MAX, 0);
+	printf(" | restor: %i\n", resor);
 
-	//resft = ft_printf("+ INTEGER MAX %+ 015d a char: %+020d", INT_MAX, INT_MIN);
-	//printf(" | restft: %i\n", resft);
-	//resor = printf("+ INTEGER MAX %+ 015d a char: %+020d", INT_MAX, INT_MIN);
-	//printf(" | restor: %i\n", resor);
+	resft = ft_printf("+ INTEGER MAX %+ 015d a char: %+020d", INT_MAX, INT_MIN);
+	printf(" | restft: %i\n", resft);
+	resor = printf("+ INTEGER MAX %+ 015d a char: %+020d", INT_MAX, INT_MIN);
+	printf(" | restor: %i\n", resor);
 
-	//resft = ft_printf("+ 04 %05d a char: %04d", -15, -14);
-	//printf(" | restft: %i\n", resft);
-	//resor = printf("+ 04 %05d a char: %04d", -15, -14);
-	//printf(" | restor: %i\n", resor);
+	resft = ft_printf("+ 04 %05d a char: %04d", -15, -14);
+	printf(" | restft: %i\n", resft);
+	resor = printf("+ 04 %05d a char: %04d", -15, -14);
+	printf(" | restor: %i\n", resor);
 
-	//resft = ft_printf("INTEGER MAX %+ 015d a char: %+015d", INT_MAX, 0);
-	//printf(" | restft: %i\n", resft);
-	//resor = printf("INTEGER MAX %+ 015d a char: %+015d", INT_MAX, 0);
-	//printf(" | restor: %i\n", resor);
+	resft = ft_printf("INTEGER MAX %+ 015d a char: %+015d", INT_MAX, 0);
+	printf(" | restft: %i\n", resft);
+	resor = printf("INTEGER MAX %+ 015d a char: %+015d", INT_MAX, 0);
+	printf(" | restor: %i\n", resor);
 
-	//resft = ft_printf("INTEGER MIN %-+015d a char: %-0+15d", INT_MIN, 0);
-	//printf(" | restft: %i\n", resft);
-	//resor = printf("INTEGER MIN %-0+15d a char: %-0+15d", INT_MIN, 0);
-	//printf(" | restor: %i\n", resor);
+	resft = ft_printf("INTEGER MIN %-+015d a char: %-0+15d", INT_MIN, 0);
+	printf(" | restft: %i\n", resft);
+	resor = printf("INTEGER MIN %-0+15d a char: %-0+15d", INT_MIN, 0);
+	printf(" | restor: %i\n", resor);
 
-	//resft = ft_printf("STRING %+015s a char: %0+15s", "PUTINSIDE", 0);
-	//printf(" | restft: %i\n", resft);
-	//resor = printf("STRING %+015s a char: %0+15s", "PUTINSIDE", 0);
-	//printf(" | restor: %i\n", resor);
+	resft = ft_printf("STRING %+015s a char: %0+15s", "PUTINSIDE", 0);
+	printf(" | restft: %i\n", resft);
+	resor = printf("STRING %+015s a char: %0+15s", "PUTINSIDE", 0);
+	printf(" | restor: %i\n", resor);
 
-	//resft = ft_printf("STRING %+0-15s a char: %+0-15s", "PUTINSIDE", 0);
-	//printf(" | restft: %i\n", resft);
-	//resor = printf("STRING %+0-15s a char: %+0-15s", "PUTINSIDE", 0);
-	//printf(" | restor: %i\n", resor);
+	resft = ft_printf("STRING %+0-15s a char: %+0-15s", "PUTINSIDE", 0);
+	printf(" | restft: %i\n", resft);
+	resor = printf("STRING %+0-15s a char: %+0-15s", "PUTINSIDE", 0);
+	printf(" | restor: %i\n", resor);
 
 	//	END INTEGER d i FLAGS
 	//	START ULONG X
@@ -462,8 +462,8 @@ void	test_bonus_precision()
 }
 int main(void)
 {
-	//test_main();
-	//test_bonus_width_and_minus();
+	test_main();
+	test_bonus_width_and_minus();
 	test_bonus_flags();
-	//test_bonus_precision();
+	test_bonus_precision();
 }
