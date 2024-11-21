@@ -6,27 +6,11 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 14:08:58 by husrevakbas       #+#    #+#             */
-/*   Updated: 2024/11/20 17:08:42 by huakbas          ###   ########.fr       */
+/*   Updated: 2024/11/21 13:00:48 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-//int	get_precision(char *flags)
-//{
-//	int	i;
-//	int	precision;
-
-//	i = 0;
-//	precision = 0;
-//	while (flags[i])
-//	{
-//		if (flags[i] == '.')
-//			precision = ft_atoi(&flags[i + 1]);
-//		i++;
-//	}
-//	return (precision);
-//}
 
 void	ft_handle_string(t_flags *flags, va_list args, int *res)
 {

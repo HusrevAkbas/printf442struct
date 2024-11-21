@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-	// DONT FORGET TO COUNT PRINTED CHARS
-	// apply flags and print cspdiuxX%
 
 void	ft_handle_convertion(t_flags *flags, va_list args, int *res)
 {

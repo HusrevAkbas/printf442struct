@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 23:38:00 by husrevakbas       #+#    #+#             */
-/*   Updated: 2024/11/21 12:31:34 by huakbas          ###   ########.fr       */
+/*   Updated: 2024/11/21 14:14:41 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 t_flags	*init_flag(void)
 {
 	t_flags	*flags;
-	
-	flags = (t_flags *) malloc(8*sizeof(int) + sizeof(char *));
+
+	flags = (t_flags *) malloc(sizeof(t_flags));
 	if (!flags)
 		return (NULL);
 	flags->id = 0;
@@ -40,6 +40,7 @@ t_flags	*init_flag(void)
 	flags->zero = 0;
 	return (flags);
 }
+
 void	set_flagset(t_flags *flags, char **checkpoint)
 {
 	while (**checkpoint && ft_strchr(get_const("flags"), **checkpoint))
@@ -57,6 +58,7 @@ void	set_flagset(t_flags *flags, char **checkpoint)
 		*checkpoint += 1;
 	}
 }
+
 t_flags	*set_flags(char **checkpoint)
 {
 	t_flags	*flags;
